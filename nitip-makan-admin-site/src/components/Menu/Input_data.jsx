@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { Upload, Calendar } from "lucide-react"
-import { handleFileUpload, formatRupiah, resetMenuForm } from "../../../utils/Menu"
+import { handleFileUpload, formatRupiah, resetMenuForm } from "../../../utils/MenuPageFunction"
 import "react-datepicker/dist/react-datepicker.css"
 
 const DatePicker = dynamic(() => import("react-datepicker"), { ssr: false })
@@ -108,7 +108,16 @@ export default function Input_data({ onAddMenu, editingItem, onUpdateMenu, cance
             <InputField label="Harga per 1 porsi" value={pricePerPortion} setValue={setPricePerPortion} isRupiah />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <InputField label="Nama Menu" value={menuName} setValue={setMenuName} />
+            <div>
+            <label className="block text-sm font-medium">Nama Menu</label>
+            <input
+              type="text"
+              value={menuName}
+              onChange={(e) => setMenuName(e.target.value)}
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+              required
+            />
+          </div>
             <InputField label="Biaya Layanan" value={serviceFee} setValue={setServiceFee} isRupiah />
           </div>
 

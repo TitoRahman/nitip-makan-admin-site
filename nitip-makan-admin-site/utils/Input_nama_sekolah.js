@@ -18,3 +18,10 @@ export function deleteUserData(index, existingData = []) {
   localStorage.setItem("users", JSON.stringify(updatedData));
   return updatedData;
 }
+
+export function paginate(array, currentPage, itemsPerPage) {
+  const totalPages = Math.ceil(array.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = array.slice(startIndex, startIndex + itemsPerPage);
+
+  return { currentItems, totalPages, startIndex };}

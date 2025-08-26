@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <div className="flex flex-wrap -mx-3 mb-0">
-      <div className="px-3 mb-6 mx-auto w-11/12 bg-white rounded-xl">
+      <div className="px-3 mb-0 mx-auto w-11/12 bg-white rounded-xl">
         <div className="flex flex-wrap items-center justify-between grow lg:mb-0 py-5 px-5">
           {/* Left Title */}
           <div className="flex flex-col justify-center mb-4 lg:mb-0">

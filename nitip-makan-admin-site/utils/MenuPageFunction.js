@@ -1,9 +1,14 @@
 // utils/formUtils.js
 
 // Format angka menjadi Rupiah
-export function formatRupiah(number) {
-  if (!number) return ""
-  return "Rp " + number.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+export const formatRupiah = (angka) => {
+  if (!angka) return "Rp 0"
+  const number = Number(angka)
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(number)
 }
 
 // Handle file upload & preview
@@ -34,4 +39,12 @@ export function resetMenuForm(setters) {
   setSelectedDate(new Date())
   setFile(null)
   setPreview(null)
+}
+
+export function paginate(array, currentPage, itemsPerPage) {
+  const totalPages = Math.ceil(array.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = array.slice(startIndex, startIndex + itemsPerPage);
+
+  return { currentItems, totalPages, startIndex };
 }
